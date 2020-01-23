@@ -1,0 +1,43 @@
+﻿@page "/"
+@page "/{name}/{number:int}"
+
+
+
+<h1>Hello, @Name</h1>
+
+Name: <input @bind="Name"/><br/>
+Number: <input @bind="Number">
+
+@for (var i = 0; i < Number; i++)
+{
+    <div>@Name</div>
+    
+}
+
+<div>@address</div>
+
+@code {
+    
+    [Parameter]
+    public string Name { get; set; }
+
+    [Parameter]
+    public int Number { get; set; }
+
+    string address;
+
+    protected override void OnInitialized()
+    {
+        
+    }
+    
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+            address = "123 Bangkok, Thailand.";
+            StateHasChanged();
+        }
+    }
+
+}
